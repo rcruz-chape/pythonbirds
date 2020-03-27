@@ -56,7 +56,7 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
         nonlocal delta_t
         nonlocal angulo
         tempo += delta_t
-''        if tempo <= 0:
+        if tempo <= 0:
             tempo = 0
             delta_t /= -multiplicador_rebobinar
         if fase.status() != EM_ANDAMENTO:
