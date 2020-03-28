@@ -72,9 +72,38 @@ Você deve criar uma classe carro que deverá possuir dois atributos composto po
         >>>carro=Carro.calcular_direcao()
         'Oeste
 """
+class Direcao():
+    direcoesdct = {
+        1: "Norte", 2: "Leste", 3: "Sul", 4: "Oeste"}
+    def __init__(self):
+        self.direcao = 1
+        self.valor
+
+    def girando_direita(self):
+        self.direcao =+ 1
+        if self.direcao > 4:
+            self.direcao = 1
+        self.valor=self.direcoesdct[self.direcao]
+
+    def girando_direita(self):
+        self.direcao =- 1
+        if self.direcao > 1:
+            self.direcao = 1
+        self.valor = self.direcoesdct[self.direcao]
+
+
 class Motor():
     def __init__(self):
         self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade = max(0,self.velocidade)
+
+
 
 
 
