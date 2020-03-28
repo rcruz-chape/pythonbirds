@@ -15,69 +15,36 @@ Você deve criar uma classe carro que deverá possuir dois atributos composto po
             N
         O       l
             S
-        Exemplo
-        >>>Motor=Motor()
-        >>>Motor.Velocidade
-        >>>0
-        >>>Motor.acelerar
-        >>>1
-        >>>Motor.acelerar
-        >>>2
-        >>>Motor.acelerar
-        >>>3
-        >>>Motor.frear
-        >>>1
-        >>>Motor.frear
-        >>>0
-        >>>direcao=Direcao()
-        >>>direcao.valor
-        >>>'Norte'
-        >>>direcao.girando_direita
-        >>>'Leste'
-        >>>direcao.girando_direita
-        >>>'Sul'
-        >>>direcao.girando_direita
-        >>>'Oeste'
-        >>>direcao.girando_direita
-        >>>'Norte'
-        >>>direcao.girando_esquerda
-        >>>'Oeste'
-        >>>direcao.girando_esquerda
-        >>>'Sul'
-        >>>direcao.girando_esquerda
-        >>>'Leste'
-        >>>direcao.girando_esquerda
-        >>>'Norte'
-        >>>carro=Carro(direcao,moto)
-        >>>carro=Carro.calcular_velocidade()
-        0
-        >>>carro=Carro.acelerar()
-        >>>carro=Carro.calcular_velocidade()
-        1
-        >>>carro=Carro.frear()
-        >>>carro=Carro.calcular_velocidade()
-        0
-        >>>carro=Carro.calcular_direcao()
-        'Norte
-        >>>carro=Carro.girar_a_esquerda()
-        >>>carro=Carro.calcular_direcao()
-        'Oeste
-        >>>carro=Carro.girar_a_esquerda()
-        >>>carro=Carro.calcular_direcao()
-        'Sul
-        >>>carro=Carro.girar_a_esquerda()
-        >>>carro=Carro.calcular_direcao()
-        'Sul
-        >>>carro=Carro.girar_direita()
-        >>>carro=Carro.calcular_direcao()
-        'Oeste
+
 """
+class carro():
+    def __init__(self, direcao=1, motor=0):
+        self.direcao = direcao
+        self.motor = motor
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar
+
+    def frear(self):
+        self.motor.frear
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_esquerda(self):
+        self.direcao.girando_esquerda()
+
+    def girar_a_direita(self):
+        self.direcao.girando_direita()
+
 class Direcao():
     direcoesdct = {
         1: "Norte", 2: "Leste", 3: "Sul", 4: "Oeste"}
     def __init__(self):
         self.direcao = 1
-        self.valor
+        self.valor = direcao.direcoesdct[self.direcao]
 
     def girando_direita(self):
         self.direcao =+ 1
@@ -85,7 +52,7 @@ class Direcao():
             self.direcao = 1
         self.valor=self.direcoesdct[self.direcao]
 
-    def girando_direita(self):
+    def girando_esquerda(self):
         self.direcao =- 1
         if self.direcao > 1:
             self.direcao = 1
