@@ -17,18 +17,21 @@ Você deve criar uma classe carro que deverá possuir dois atributos composto po
             S
 
 """
-class carro():
-    def __init__(self, direcao=1, motor=0):
-        self.direcao = direcao
-        self.motor = motor
+class Carro():
+    def __init__(self):
+        self.motor = Motor()
+        self.direcao = Direcao()
+
+
     def calcular_velocidade(self):
         return self.motor.velocidade
 
+
     def acelerar(self):
-        self.motor.acelerar
+        self.motor.acelerar()
 
     def frear(self):
-        self.motor.frear
+        self.motor.frear()
 
     def calcular_direcao(self):
         return self.direcao.valor
@@ -44,18 +47,19 @@ class Direcao():
         1: "Norte", 2: "Leste", 3: "Sul", 4: "Oeste"}
     def __init__(self):
         self.direcao = 1
-        self.valor = direcao.direcoesdct[self.direcao]
+        self.valor = Direcao.direcoesdct[self.direcao]
 
     def girando_direita(self):
-        self.direcao =+ 1
+        self.direcao += 1
         if self.direcao > 4:
             self.direcao = 1
-        self.valor=self.direcoesdct[self.direcao]
+        self.valor = self.direcoesdct[self.direcao]
+
 
     def girando_esquerda(self):
-        self.direcao =- 1
-        if self.direcao > 1:
-            self.direcao = 1
+        self.direcao -= 1
+        if self.direcao < 1:
+            self.direcao = 4
         self.valor = self.direcoesdct[self.direcao]
 
 
@@ -69,7 +73,36 @@ class Motor():
     def frear(self):
         self.velocidade -= 2
         self.velocidade = max(0,self.velocidade)
-
+if __name__ == '__main__':
+    carro = Carro()
+    print(Carro.calcular_velocidade(carro))
+    Carro.acelerar(carro)
+    print(Carro.calcular_velocidade(carro))
+    Carro.acelerar(carro)
+    print(Carro.calcular_velocidade(carro))
+    Carro.acelerar(carro)
+    print(Carro.calcular_velocidade(carro))
+    Carro.frear(carro)
+    print(Carro.calcular_velocidade(carro))
+    Carro.frear(carro)
+    print(Carro.calcular_velocidade(carro))
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_direita(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_direita(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_direita(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_direita(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_esquerda(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_esquerda(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_esquerda(carro)
+    print(Carro.calcular_direcao(carro))
+    Carro.girar_a_esquerda(carro)
+    print(Carro.calcular_direcao(carro))
 
 
 
