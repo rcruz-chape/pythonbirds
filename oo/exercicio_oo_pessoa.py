@@ -98,9 +98,9 @@ class Pessoa():
 
 
     def caracteristica(self):
-        return 'Nome: ' + self.nome + '\n'
-               'Idade: ' + str(self.idade) ' anos \n'
-               'Peso: ' + str(self.peso) ' Kg \n'
+        return 'Nome: ' + self.nome + '\n' +
+               'Idade: ' + str(self.idade) ' anos \n' +
+               'Peso: ' + str(self.peso) ' Kg \n' +
                'Altura: ' + str(self.altura) ' cm '
 
 
