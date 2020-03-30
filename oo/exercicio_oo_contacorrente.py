@@ -1,3 +1,4 @@
+from decimal import Decimal
 """
 Classe Conta Corrente: Crie uma classe para implementar uma conta corrente.
 A classe deve possuir os seguintes atributos: número da conta, nome do correntista e saldo.
@@ -18,17 +19,19 @@ conta: 12345, Saldo = 500,00
 conta: 12345, Saldo = 249,01
 """
 
-class ContaCorrente(nome,saldo=0,conta):
-    def __init__(self):
+class ContaCorrente():
+    def __init__(self, nome, conta, saldo = 0):
         self.nome = nome
         self.conta = conta
         self.saldo = saldo
 
     def demonstraSaldo(self):
-        return 'Conta:   ' + str(self.conta) + '   Saldo:   '+ str(self.saldo)
+        return 'Conta:   ' + str(self.conta) + '   Saldo:   '+ str.format(self.saldo)
 
     def deposito(self,pfValorDeposito):
         self.saldo += pfValorDeposito
+        self.saldo = Decimal(self.saldo)
 
     def saque(self,pfValorSaque):
         self.saldo -= pfValorSaque
+        self.saldo = Decimal(self.saldo)
