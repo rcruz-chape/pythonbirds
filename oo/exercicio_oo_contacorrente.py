@@ -13,7 +13,7 @@ conta: 12345, Saldo = 0,00
 >>> conta.deposito(500)
 >>> print(conta.demonstraSaldo())
 conta: 12345, Saldo = 500,00
->>> conta.saque(250,99)
+>>> conta.saque(250.99)
 >>> print(conta.demonstraSaldo())
 conta: 12345, Saldo = 249,01
 """
