@@ -5,10 +5,10 @@ Atributos: Cor, circunferência, material
 Métodos: trocaCor e mostraCor
 >>> cor = Cor()
 >>> print(cor.mostraCor())
->>> 'Branco'
+>>> Branco
 >>> cor.trocaCor("Vermelho")
 >>> print(cor.mostraCor())
->>> 'Vermelho'
+>>> Vermelho
 
 """
 class Cor():
