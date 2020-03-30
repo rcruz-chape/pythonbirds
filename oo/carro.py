@@ -18,9 +18,9 @@ Você deve criar uma classe carro que deverá possuir dois atributos composto po
 
 """
 class Carro():
-    def __init__(self):
-        self.motor = Motor()
-        self.direcao = Direcao()
+    def __init__(self, direcao, motor):
+        self.motor = motor
+        self.direcao = direcao
 
 
     def calcular_velocidade(self):
@@ -74,7 +74,9 @@ class Motor():
         self.velocidade -= 2
         self.velocidade = max(0,self.velocidade)
 if __name__ == '__main__':
-    carro = Carro()
+    direcao = Direcao()
+    motor = Motor()
+    carro = Carro(direcao,motor)
     print(Carro.calcular_velocidade(carro))
     Carro.acelerar(carro)
     print(Carro.calcular_velocidade(carro))
