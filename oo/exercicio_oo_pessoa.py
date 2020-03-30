@@ -85,23 +85,26 @@ class Pessoa():
         self.peso += piPesoNew
 
     def envelhecer(self,piIdadeNew):
-        bTesteIdade = true
-        if self.idade > 20:
-            bTesteIdade = false
-        if bTesteIdade:
-            vidade = self.idade + piIdadeNew
+         if self.idade < 20:
             vidadeinicial = self.idade
-            for vidadeinicial in vidade:
-                self.crescer(self.vDmediacrescimento[vidadeinicial])
-        self.idade =+ piIdadeNew
+            self.idade += piIdadeNew
+            while vidadeinicial <= self.idade:
+                if 0 < vidadeinicial < 21:
+                    self.crescer(self.vDmediacrescimento[vidadeinicial])
+                vidadeinicial += 1
+         else:
+            self.idade += piIdadeNew
 
 
 
     def caracteristica(self):
-        return 'Nome: ' + self.nome + '\n' +
-               'Idade: ' + str(self.idade) ' anos \n' +
-               'Peso: ' + str(self.peso) ' Kg \n' +
-               'Altura: ' + str(self.altura) ' cm '
+        return 'Nome: ' + self.nome + '\nIdade: ' + str(self.idade) + ' anos \nPeso: ' + str(self.peso) + ' Kg \nAltura: ' + str(self.altura) + ' cm '
 
 
-
+if __name__ == '__main__':
+    pessoa = Pessoa()
+    print(pessoa.caracteristica())
+    pessoa.envelhecer(40)
+    print(pessoa.caracteristica())
+    pessoa.engordar(121)
+    print(pessoa.caracteristica())
