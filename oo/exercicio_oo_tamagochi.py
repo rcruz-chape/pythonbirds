@@ -146,7 +146,7 @@ def main():
                     vcTamagochi.alteraSaude(vdFomeSaude[i])
         elif viAcao == 5:
             vcTamagochi.extraiFome()
-            if vcTamagochi.fome == :
+            if vcTamagochi.fome == vcTamagochi.MAXFOMESAUDE:
                 vcTamagochi.extraiSaude()
                 vcTamagochi.alterarFome()
         elif viAcao == 6:
