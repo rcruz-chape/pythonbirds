@@ -100,6 +100,7 @@ def main():
     vsIdade = ""
     viHumor = 0
     viVivo = 1
+    viEndTime = 0
     print('Olá...Seja Bem Vindo ao Jogo do Tomagochi...')
     vsNome = input("Qual será o meu nome?  ")
     while viIdade < 0:
@@ -116,52 +117,68 @@ def main():
     print('Olá!\n Eu sou ' + vcTamagochi.retornaNome() + '.\nTenho '+ vcTamagochi.retornaIdade() + ' anos\n'
           + vcTamagochi.retornaEstadoHumor(viHumor))
     time.sleep(5)
+    viEndTime = time.time() + 10
     while viVivo == 1:
      #   vLock = multiprocessing.Lock()
      #   vLock.acquire()
      #   p = multiprocessing.Process(target=vcTamagochi.cronometroFomeSaude())
      #   p.start()
-
-        vsAcao = input("O que eu faço?\n 1 - Mudo Nome \n 2 - Mudo de Idade \n 3 - Me Alimento \n 4 - Tomo Remédio \n "
-                       "5 - Consumir\n 6 - Estou Doente\n 7 - Finalizo a Minha Vida    "
-                       )
-
-        if vsAcao.isnumeric():
-            viAcao = int(vsAcao)
-        if viAcao == 1:
-            vcTamagochi.alteraNome(input("Qual será o meu novo Nome?   "))
-        elif viAcao == 2:
-            vcTamagochi.alteraIdade(int(input("Qual será a minha Idade?   ")))
-        elif viAcao == 3:
-            viAlimento = int(input("O que eu vou comer?\n 1 - Batata-Frita\n 2 - Maçã\n 3 - Sanduíche\n 4 - Arroz, "
-                                   "Feijão, Bife, Salada\n 5 - Churrasco\n"))
-            for i in vdFomeSaude:
-                if i == viAlimento:
-                    vcTamagochi.alterarFome(vdFomeSaude[i])
-        elif viAcao == 4:
-            viRemedio = int(input("O que Doutor vai fazer?\n 1 - Receitar Anti-Inflamatório\n 2 - Receitar Descanso "
-                                  " 3 - Receitar AntiBiótico\n 4 - Internar no Quarto \n 5 - UTI\n"))
-            for i in vdFomeSaude:
-                if i == viRemedio:
-                    vcTamagochi.alteraSaude(vdFomeSaude[i])
-        elif viAcao == 5:
+        if viEndTime < time.time():
+            viEndTime = time.time() + 10
             vcTamagochi.extraiFome()
-            if vcTamagochi.fome == vcTamagochi.MAXFOMESAUDE:
-                vcTamagochi.extraiSaude()
-                vcTamagochi.alterarFome()
-        elif viAcao == 6:
-            vcTamagochi.extraiSaude()
-        elif viAcao == 7:
-            vsTemCerteza = input("Tem Certeza?\n S - Sim\n N - Não    ")
-            if vsTemCerteza == 'S':
-                vcTamagochi.alterarFome((vcTamagochi.fome*(-1)))
-                vcTamagochi.alteraSaude((vcTamagochi.saude*(-1)))
-                viVivo = 0
+            if vcTamagochi.fome < vcTamagochi.MINFOMESAUDE + 10:
+                viFome = int(input("Estou com Fome, preciso comer.\n Se eu passar fome, impactará a minha saúde\n"
+                                   "O que vou comer?\n 1 - Batata-Frita\n 2 - Maçã\n 3 - Sanduíche\n 4 - Arroz, "
+                                   "Feijão, Bife, Salada\n 5 - Churrasco\n 6 - Nada"))
+                if viFome == 6:
+                    vcTamagochi.extraiSaude()
+                    if vcTamagochi.saude == 0:
+                        viVivo == 0
+                else:
+                    vcTamagochi.alterarFome(viFome)
 
-        viHumor = vcTamagochi.retornaHumor()
-        print('Olá!\n Eu sou ' + vcTamagochi.retornaNome() + '.\nTenho ' + vcTamagochi.retornaIdade() + ' anos\n'
-              + vcTamagochi.retornaEstadoHumor(viHumor))
-        time.sleep(5)
+
+        if viVivo == 1:
+            vsAcao = input("O que eu faço?\n 1 - Mudo Nome \n 2 - Mudo de Idade \n 3 - Me Alimento \n 4 - Tomo Remédio \n "
+                           "5 - Consumir\n 6 - Estou Doente\n 7 - Finalizo a Minha Vida    "
+                           )
+
+            if vsAcao.isnumeric():
+                viAcao = int(vsAcao)
+            if viAcao == 1:
+                vcTamagochi.alteraNome(input("Qual será o meu novo Nome?   "))
+            elif viAcao == 2:
+                vcTamagochi.alteraIdade(int(input("Qual será a minha Idade?   ")))
+            elif viAcao == 3:
+                viAlimento = int(input("O que eu vou comer?\n 1 - Batata-Frita\n 2 - Maçã\n 3 - Sanduíche\n 4 - Arroz, "
+                                       "Feijão, Bife, Salada\n 5 - Churrasco\n"))
+                for i in vdFomeSaude:
+                    if i == viAlimento:
+                        vcTamagochi.alterarFome(vdFomeSaude[i])
+            elif viAcao == 4:
+                viRemedio = int(input("O que Doutor vai fazer?\n 1 - Receitar Anti-Inflamatório\n 2 - Receitar Descanso "
+                                      " 3 - Receitar AntiBiótico\n 4 - Internar no Quarto \n 5 - UTI\n"))
+                for i in vdFomeSaude:
+                    if i == viRemedio:
+                        vcTamagochi.alteraSaude(vdFomeSaude[i])
+            elif viAcao == 5:
+                vcTamagochi.extraiFome()
+                if vcTamagochi.fome == vcTamagochi.MAXFOMESAUDE:
+                    vcTamagochi.extraiSaude()
+                    vcTamagochi.alterarFome()
+            elif viAcao == 6:
+                vcTamagochi.extraiSaude()
+            elif viAcao == 7:
+                vsTemCerteza = input("Tem Certeza?\n S - Sim\n N - Não    ")
+                if vsTemCerteza.upper() == 'S':
+                    vcTamagochi.alterarFome((vcTamagochi.fome*(-1)))
+                    vcTamagochi.alteraSaude((vcTamagochi.saude*(-1)))
+                    viVivo = 0
+
+            viHumor = vcTamagochi.retornaHumor()
+            print('Olá!\n Eu sou ' + vcTamagochi.retornaNome() + '.\nTenho ' + vcTamagochi.retornaIdade() + ' anos\n'
+                  + vcTamagochi.retornaEstadoHumor(viHumor))
+            time.sleep(5)
         if viVivo == 0:
             print('Adeus mundo cruel. Aqui Jaz o Bichinho Virtual ' + vcTamagochi.retornaNome() + ' aos '
                   + vcTamagochi.retornaIdade()  + 'anos.')
