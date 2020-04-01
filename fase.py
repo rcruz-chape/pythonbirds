@@ -74,7 +74,7 @@ class Fase():
 
         :return:
         """
-        return EM_ANDAMENTO
+        return VITORIA
 
     def lancar(self, angulo, tempo):
         """
